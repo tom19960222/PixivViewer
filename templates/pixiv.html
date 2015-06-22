@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!-- saved from url=(0118)file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/pixiv.html -->
+<html lang="zh-tw" class="verticaltext textcombine" xmlns:wb="http://open.weibo.com/wb"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=970">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:site_name" content="pixiv">
+<meta property="fb:app_id" content="140810032656374">
+<meta property="wb:webmaster" content="4fd391fccdb49500">
+<meta property="og:image" content="http://source.pixiv.net/www/images/pixiv_logo.gif?20130523">
+<meta property="og:description" content="pixiv是一個集插畫投稿及閱覽于一體的“繪畫交流平台”。這裡有種類豐富的插畫投稿，還時常舉辦由用戶發起的插畫企劃和官方承認的插畫比賽。">
+
+<meta name="application-name" content="pixiv">
+<meta name="msapplication-tooltip" content="插畫交流網站">
+<meta name="msapplication-starturl" content="http://www.pixiv.net/mypage.php"><meta name="msapplication-navbutton-color" content="#0096db">
+<meta name="msapplication-task" content="name=投稿作品;action-uri=http://www.pixiv.net/upload.php;icon-uri=http://source.pixiv.net/www/images/ico/upload.ico">
+<meta name="msapplication-task" content="name=管理作品;action-uri=http://www.pixiv.net/member_illust.php;icon-uri=http://source.pixiv.net/www/images/ico/settings.ico">
+<meta name="msapplication-task" content="name=收藏;action-uri=http://www.pixiv.net/bookmark.php;icon-uri=http://source.pixiv.net/www/images/ico/bookmarks.ico">
+<meta name="msapplication-task" content="name=收件箱;action-uri=http://www.pixiv.net/msgbox.php;icon-uri=http://source.pixiv.net/www/images/ico/messages.ico">
+<meta name="msapplication-task" content="name=動態;action-uri=http://www.pixiv.net/stacc/;icon-uri=http://source.pixiv.net/www/images/ico/stacc.ico">
+
+
+<title> {{ keyword }}的搜尋結果</title>
+<meta name="keywords" content="pixiv,ピクシブ,イラスト,イラストレーション,マンガ,漫画,manga,コミュニティ,SNS,投稿,コンテスト">
+<meta name="description" content="pixiv是一個集插畫投稿及閱覽于一體的“繪畫交流平台”。這裡有種類豐富的插畫投稿，還時常舉辦由用戶發起的插畫企劃和官方承認的插畫比賽。">
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://touch.pixiv.net/search.php?s_mode=s_tag_full&word=%E8%89%A6%E3%81%93%E3%82%8C">
+<link rel="alternate" href="android-app://jp.pxv.android/pixiv/illusts/tag/%E8%89%A6%E3%81%93%E3%82%8C">
+
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="http://www.pixiv.net/favicon.ico">
+
+
+
+
+
+<script>
+new function() {
+
+var user_id = "";
+var service = 'www.pixiv.net';
+var api = 'http://www.pixiv.net/rpc/js_error.php';
+
+
+window.onerror = function(message, url, line) {
+window.onerror = null;
+if (!url && line === 0)return;
+
+// Googleのスクリプトがエラー出しまくってるので一時的に対処
+if (url.indexOf('https://apis.google.com/_/scs/apps-static/') === 0) {
+if (Math.random() > 0.01) return;
+}
+
+// IE9がエラー出しまくってるので一時的に対処
+if (message === "null" && line === 1 && window.navigator.userAgent.indexOf("MSIE 9.0") >= 0) {
+if (Math.random() > 0.01) return;
+}
+
+// Safariがエラー出しまくってるので一時的に対処
+if ((message === null || message === "null") && line === 0 && window.navigator.userAgent.indexOf("Safari") >= 0) {
+if (Math.random() > 0.01) return;
+}
+
+
+window._send(message, url, line);
+
+};
+
+window._time = function(html_end_sec, dom_ready_sec, onload_sec) {
+window._send('js_time', location.href, 0, html_end_sec, dom_ready_sec, onload_sec);
+}
+
+window._send = function(message, url, line, html_end_sec, dom_ready_sec, onload_sec) {
+var result, q, e = window.encodeURIComponent;
+try {
+if ('' + message === '[object Event]') {
+message = [
+'type: ' + message.type,
+'' + message.target === '[object HTMLScriptElement]' ?
+'target: {src: ' + message.target.src + '}' :
+'target: ' + message.target,
+'currentTarget: ' + message.currentTarget,
+'eventPhase: ' + message.eventPhase,
+].join(', ');
+}
+q = [
+'service=' + e(service),
+'message=' + e(message),
+'url=' + e(url),
+'line=' + e(line),
+'location=' + e(location.href),
+'user_id=' + e(user_id),
+'premium=' + (window.pixiv && pixiv.user ? +!!pixiv.user.premium : '')
+];
+html_end_sec === undefined || q.push(
+'html_end_sec=' + e(html_end_sec),
+'dom_ready_sec=' + e(dom_ready_sec || 0),
+'onload_sec=' + e(onload_sec || 0)
+);
+new Image().src = api + '?' + q.join('&');
+}
+catch (error) {
+new Image().src = api + '?service=' + e(service) + '&message=' + e('send error: ' + error.message) + '&line=' + e(error.line || '');
+}
+};
+};
+</script>
+<link rel="stylesheet" href="http://source.pixiv.net/www/css/global.css?ac2967a2b4189b10ffea508c7577848d">
+<link rel="stylesheet" href="http://source.pixiv.net/www/css/global_2.css?2d55133766f091f790c129dafd9f63ca">
+<link rel="stylesheet" href="http://source.pixiv.net/www/css/app.css?be605bce8de0290ce2bd45f3cfc6909c">
+
+<!--[if IE 8]>
+<link rel="stylesheet" href="http://source.pixiv.net/www/css/ie.css?dcea18547d63a4e25593a5bfc89f02c6">
+<![endif]-->
+<!--[if IE 9]>
+<link rel="stylesheet" href="http://source.pixiv.net/www/css/ie9.css?e2871da6753d43533b513cdac2d82a38">
+<![endif]-->
+<link rel="stylesheet" href="http://source.pixiv.net/www/css/test.css?1e84377790c0743ddd87e0283f5862ec">
+
+
+<!--[if lte IE 8]>
+<script src="http://source.pixiv.net/www/js/lib/html5shiv/html5shiv.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/svg4everybody.ie8.js"></script>
+<script async="" type="text/javascript" src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/check_359604.js"></script>
+<!--<![endif]-->
+<script src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/lib.min.js"></script>
+<script src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/colon.min.js"></script>
+<script src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/app.min.js"></script>
+<!--[if lte IE 9]>
+<script src="http://source.pixiv.net/www/js/lib/ajaxhooks/xdr.js"></script>
+<![endif]-->
+<script src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/zh-tw.js"></script>
+    
+</head><body><header class="header"><div class="layout-wrapper"><h1 class="title header-logo"><div id="logoMap"><img usemap="#logoMap" src="" width="180" height="50" alt=""></div><map name="logoMap"><area href="http://www.pixiv.net/mypage.php" coords="0,0,128,50" shape="rect" alt="pixiv"><area class="special-link" href="" target="_blank" coords="128,0,180,50" shape="rect" alt=""></map><script type="text/javascript" src="http://d.pixiv.org/show?zone_id=logo_side&segments=noseg&format=js&pla_tpl_name=header_normal&pla_referer_page_name=pixiv_search&K=76231169cb76&num=5587908e18"></script><a href="http://www.pixiv.net/mypage.php" class="_icon sprites-logo">pixiv</a></h1><script>pixiv.user.unreadCount = {message : 0,popboard: 0};</script><script async="" type="text/javascript" src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/check_359604(1).js"></script><iframe src="./pixiv_files/saved_resource.html" style="visibility: hidden; display: none !important;"></iframe><div id="notification-message" class="notification-popup"><h2>私信<a href="http://www.pixiv.net/setting_info.php" class="setting _ui-tooltip" data-tooltip="設置"></a></h2><ul class="notification-list"></ul><p class="more"><a href="http://www.pixiv.net/msgbox.php">顯示全部信息</a></p></div><div id="notification-popboard" class="notification-popup"><h2>彈出通知<a href="http://www.pixiv.net/setting_info.php" class="setting _ui-tooltip" data-tooltip="設置"></a></h2><ul class="notification-list"></ul><p class="more"><a href="http://www.pixiv.net/notify_all.php">顯示全部通知</a></p><div class="_notification-request-permission">使用桌面通知更新</div></div><form method="get" class="ui-search" action="http://www.pixiv.net/search.php">
+<input type="hidden" name="s_mode" value="s_tag"><div class="container"><input type="text" id="suggest-input" name="word" value="艦これ" placeholder="搜索"><div class="clear"></div></div><input type="submit" class="submit sprites-search-old">
+</form><div class="ad"></div></div></header>    
+<!--[if lt IE 8]>
+<div id="outdated-browser-banner" style="display:none"><p>你所使用的瀏覽器不支持，請使用最新的瀏覽器。</p><ul><li><a href="http://windows.microsoft.com/ie"><img src="http://source.pixiv.net/common/images/icon_ie.png" width="48" height="48">Internet Explorer</a></li><li><a href="http://www.google.com/chrome"><img src="http://source.pixiv.net/common/images/icon_chrome.png" width="48" height="48">Google Chrome</a></li><li><a href="http://getfirefox.com/"><img src="http://source.pixiv.net/common/images/icon_firefox.png" width="48" height="48">Firefox</a></li></ul><div class="close" onclick="return pixiv.outdatedBrowser.hideBanner()">×</div></div><script src="http://source.pixiv.net/www/js/files/outdated.min.js?407d22d6dadbc8b13c1af24274af4cc8"></script><script>pixiv.outdatedBrowser.showBanner();</script>
+<![endif]-->
+
+
+<ul class="_toolmenu"><li id="back-to-top" class="item ui-scroll off"><i class="_icon-12 _icon-up"></i></li></ul>
+
+
+<div id="ui-tooltip-container" class="_hidden" style="top: 213px; left: 540px;">
+<div class="wrapper">
+<div class="content">pixivプレミアムで作品をブックマーク数ごとに絞り込み表示できます</div>
+<div class="nipple" style="left: 100px;"></div>
+</div>
+</div>
+
+<div id="status-bar"></div>
+
+<script id="template-thumbnail-filter" type="text/x-handlebars-template">
+<div class="toolbar-item require-premium off" id="thumbnail-filter-container">
+<span class="label" onclick="pixiv.thumbnailFilter.toggle()"><i class="_icon sprites-premium"></i>篩選縮略圖設置</span>
+
+<div class="toolbar-menu">
+<div class="close" onclick="pixiv.thumbnailFilter.close()"></div>
+
+<div class="disabled">
+
+<div class="_icon sprites-help ui-modal-trigger _ui-tooltip" data-tooltip="關於標籤／用戶ID">?</div>
+<section class="positive">
+<h1 class="title">突出顯示的作品</h1>
+<div class="submit-form">
+<input class="item-name" type="text" placeholder="標籤 / 用戶ID" disabled>
+<button class="add-button"></button>
+</div>
+
+</section>
+<section class="negative">
+<h1 class="title">隱藏作品</h1>
+<div class="submit-form"><input class="item-name" type="text" placeholder="標籤 / 用戶ID" disabled><button class="add-button"></button>
+</div>
+
+</section>
+
+</div>
+<div class="require-premium"><a href="/premium.php?ref=thumbnail_filter" target="_blank">成為pixiv高級用戶後可以選擇突出顯示或隱藏縮略圖哦！</a></div>
+<div class="hide _clickable" onclick="pixiv.thumbnailFilter.hide()">隱藏指南</div>
+
+</div>
+</div>
+</script>
+
+<div id="thumbnail-filter-help" class="introduction-modal-container action-modal">
+<section class="introduction-modal">
+<div class="close ui-modal-close"></div>
+
+<p class="label">タグ / ユーザーIDの指定方法</p>
+<ul class="_list">
+<li>指定"<span class="_info">標籤 (例如：チョビ)</span>"將會在過濾除表裡<strong>顯示一部分的標籤</strong></li>
+<li>指定"<span class="_info">標籤 (例如：チョビ)</span>"以及"<span class="_info">11</span>"將會使濾除表<strong>顯示精准的標籤</strong>。</li>
+<li>若你只指定"<span class="_info">11</span>"，濾除系統將濾除<strong>用戶ID</strong>或者<strong>相關標籤</strong>。若你想要正確精准的濾除效果的話，請加入更加詳細的標籤資料。</li>
+</ul>
+</section>
+<section class="introduction-modal submit">
+<button class="modal-button submit ui-modal-close">關閉</button>
+</section>
+</div>
+
+
+<script>
+pixiv.text.today = '本日';
+pixiv.text.yesterday = '昨日';
+pixiv.text.notifications = 'メッセージ・ポップボード';
+
+pixiv.text.dailyRanking = '今日排行榜';
+pixiv.text.weeklyRanking = '本周排行榜';
+pixiv.text.monthlyRanking = '本月排行榜';
+pixiv.text.rookieRanking = '新人排行榜';
+pixiv.text.daily_r18Ranking = 'R-18 今日排行榜';
+pixiv.text.r18gRanking = 'R-18G 排行榜';
+pixiv.text.maleRanking = '男性熱門排行榜';
+pixiv.text.femaleRanking = '女性熱門排行榜';
+</script><script async="" type="text/javascript" src="file:///Users/Ikaros/ownCloud/%E7%A8%8B%E5%BC%8F%E4%BD%9C%E5%93%81/%E5%B9%B3%E6%9D%BF/PixivViewer/templates/%E3%80%8C%E8%89%A6%E3%81%93%E3%82%8C%E3%80%8D%E3%81%AE%E7%94%BB%E5%83%8F%E6%8A%95%E7%A8%BF%E4%BD%9C%E5%93%81%E3%81%AE%E6%A4%9C%E7%B4%A2%20[pixiv]_files/check_359604.js"></script><iframe src="./pixiv_files/saved_resource.html" style="visibility: hidden; display: none;"></iframe>
+<div id="premium-introduction-modal" class="introduction-modal-container">
+<section class="introduction-modal">
+<div class="close ui-modal-close"></div>
+<h1 class="title" style="margin-bottom:12px;"></h1>
+<p class="caption">他にも作品の再投稿や広告非表示など<br>便利な機能が盛りだくさん</p>
+<a href="http://www.pixiv.net/premium.php" class="button-container premium ui-modal-close" target="_blank">
+<div class="label layout-cell">註冊pixiv高級用戶</div>
+<div class="layout-cell">
+<i class="_icon sprites-go"></i>
+</div>
+</a>
+</section>
+</div>
+
+
+<div id="wrapper">
+<noscript>
+&amp;amp;amp;lt;div style="background-color:#F2F4F6;text-align:center;margin-bottom:10px;padding:5px;"&amp;amp;amp;gt;
+&amp;amp;amp;lt;p style="color:#ff0000;"&amp;amp;amp;gt;瀏覽器不支持JavaScript。&amp;amp;amp;lt;br&amp;amp;amp;gt;如果瀏覽器不支持javascript，將無法正常使用網站的部分功能。&amp;amp;amp;lt;/p&amp;amp;amp;gt;
+&amp;amp;amp;lt;/div&amp;amp;amp;gt;
+</noscript>
+
+
+<script>pixiv.context.tools = {"2d":["Photoshop","Illustrator","Fireworks","Flash","Painter","PaintShopPro","IllustStudio","ComicStudio","RETAS STUDIO","SAI","PhotoStudio","Pixia","NekoPaint","PictBear","openCanvas","ArtRage","Expression","Inkscape","GIMP","CGillust","COMICWORKS","MS_Paint","EDGE","AzPainter","AzPainter2","AzDrawing","PicturePublisher","SketchBookPro","Processing","4thPaint","GraphicsGale","mdiapp","Paintgraphic","AfterEffects","pixiv\u30c1\u30e3\u30c3\u30c8","drawr","drawTwit","\u304a\u7d75\u63cf\u304d\u63b2\u793a\u677f","\u304a\u7d75\u63cf\u304d\u30c1\u30e3\u30c3\u30c8","\u3053\u304f\u3070\u3093.in","\u624b\u66f8\u304d\u30d6\u30ed\u30b0","\u30b3\u30df\u30e9\u30dc","CLIP PAINT Lab","FireAlpaca","Pixelmator","CLIP STUDIO PAINT","AzDrawing2","\u3048\u3082\u3075\u308a\u30fbE-mote"],"3d":["Lightwave3D","Shade","Poser","STRATA","AnimationMaster","XSI","CARRARA","CINEMA4D","Maya","3dsMax","Blender","ZBrush","Metasequoia","Sunny3D","Bryce","Vue","\u516d\u89d2\u5927\u738b","SketchUp","VistaPro","Sculptris","\u30b3\u30dfPo!","modo","DAZ Studio"],"analog":["\u925b\u7b46","\u8272\u925b\u7b46","\u30b7\u30e3\u30fc\u30d7\u30da\u30f3\u30b7\u30eb","\u30dc\u30fc\u30eb\u30da\u30f3","\u30df\u30ea\u30da\u30f3","\u3064\u3051\u30da\u30f3","\u7b46","\u900f\u660e\u6c34\u5f69","\u6cb9\u5f69","\u30a2\u30af\u30ea\u30eb","\u7d75\u306e\u5177","\u30af\u30ec\u30e8\u30f3","\u30d1\u30b9\u30c6\u30eb","\u30b3\u30d4\u30c3\u30af","\u30de\u30b8\u30c3\u30af","\u6c34\u5f69\u8272\u925b\u7b46","\u30ab\u30e9\u30fc\u30a4\u30f3\u30af","\u30a8\u30a2\u30d6\u30e9\u30b7","\u30b5\u30a4\u30f3\u30da\u30f3","\u4e07\u5e74\u7b46","\u7b46\u30da\u30f3","\u9854\u5f69","\u30af\u30ec\u30d1\u30b9","\u30af\u30fc\u30d4\u30fc\u30da\u30f3\u30b7\u30eb"]};pixiv.text['2d'] = '2DCG';pixiv.text['3d'] = '3DCG';pixiv.text['analog'] = '傳統工具';</script><div class="layout-body"><div class="_unit"><nav class="breadcrumb"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://www.pixiv.net/" itemprop="url"><span itemprop="title">pixiv</span></a></span><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://www.pixiv.net/tags.php?tag=%E8%89%A6%E9%9A%8A%E3%81%93%E3%82%8C%E3%81%8F%E3%81%97%E3%82%87%E3%82%93" itemprop="url"><span itemprop="title">艦隊これくしょん</span></a></span><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://www.pixiv.net/tags.php?tag=%E8%89%A6%E3%81%93%E3%82%8C" itemprop="url"><span itemprop="title">艦これ</span></a></span></nav><div class="column-label"><h1 class="column-title"><a href="#" class="self">{{ keyword }}</a></h1><!-- --><span class="count-badge">{{ search_count }}件</span></div><nav class="column-menu"><ul class="menu-items"><li class="current">標籤</li><li><a href="http://www.pixiv.net/search.php?s_mode=s_tc&word=%E8%89%A6%E3%81%93%E3%82%8C">標題／簡介</a></li></ul><ul class="menu-items"><li class="current">完全一致</li><li><a href="http://www.pixiv.net/search.php?s_mode=s_tag&word=%E8%89%A6%E3%81%93%E3%82%8C">部分一致</a></li></ul><ul class="menu-items"><li class="current">全部</li><li><a href="http://www.pixiv.net/search.php?s_mode=s_tag_full&word=%E8%89%A6%E3%81%93%E3%82%8C&r18=1">R-18</a></li></ul><div class="menu-items"><div class="select-item"><span class="current has-menu" id="size-selector-current">尺寸</span><select id="size-selector"><option value="">全部尺寸</option><option value="-1000">小</option><option value="1001-3000">中</option><option value="3001-">大</option></select></div><div class="select-item"><span class="current has-menu" id="ratio-selector-current">長寬比</span><select id="ratio-selector"><option value="">全部長寬比</option><option value="0.5">橫長</option><option value="-0.5">長度</option><option value="0">正方形</option></select></div><div class="select-item"><span class="current has-menu" id="tool-selector-current">工具</span><select id="tool-selector"><option value="">全部工具</option><option value="Photoshop">Photoshop</option><option value="Illustrator">Illustrator</option><option value="Fireworks">Fireworks</option><option value="Flash">Flash</option><option value="Painter">Painter</option><option value="PaintShopPro">PaintShopPro</option><option value="IllustStudio">IllustStudio</option><option value="ComicStudio">ComicStudio</option><option value="RETAS STUDIO">RETAS STUDIO</option><option value="SAI">SAI</option><option value="Lightwave3D">Lightwave3D</option><option value="Shade">Shade</option><option value="Poser">Poser</option><option value="STRATA">STRATA</option><option value="AnimationMaster">AnimationMaster</option><option value="鉛筆">鉛筆</option><option value="色鉛筆">色鉛筆</option><option value="シャープペンシル">シャープペンシル</option><option value="ボールペン">ボールペン</option><option value="ミリペン">ミリペン</option><option value="__other__">其他...</option></select></div></div></nav><nav class="column-order-menu"><div class="pager-container"><span class="prev"></span><ul class="page-list"><li class="current">1</li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=2">2</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=3">3</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=4">4</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=5">5</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=6">6</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=7">7</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=8">8</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=9">9</a></li></ul><span class="next"><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=2" rel="next" class="_button" title="下一頁"><i class="_icon sprites-next-linked"></i></a></span></div><ul class="menu-items"><li><a href="http://www.pixiv.net/premium.php?ref=popular_d_popup" target="_blank" class="require-premium _ui-tooltip" data-title="searchModalPremium" data-caption="searchModalPremiumCaption" data-tooltip="pixiv高級用戶獨有功能" data-tooltip-class="large"><span class="has-menu">按熱門度排序</span></a></li><li class="current">按最新排序</li><li class="select-item"><span class="has-menu" id="order-date-selector-current">按舊排序</span><select id="order-date-selector"><option value="">按舊排序:</option><option value="">全部期間</option><option value="1">最近一天</option><option value="7">最近一周</option><option value="30">最近一個月</option></select></li></ul></nav><div class="_bookmark-ranges"><ul class="tabs _ui-tooltip" data-tooltip="pixivプレミアムで作品をブックマーク数ごとに絞り込み表示できます"><li class="current"><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge-gray"></i>すべて</a></li><li class=""><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge"></i>10000</a></li><li class=""><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge"></i>5000</a></li><li class=""><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge"></i>1000</a></li><li class=""><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge"></i>500</a></li><li class=""><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge"></i>300</a></li><li class=""><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge"></i>100</a></li><li class=""><a href="http://www.pixiv.net/premium.php?ref=bookmark_ranges" class="require-premium"><i class="_icon sprites-premium"></i><i class="_icon sprites-bookmark-badge"></i>50</a></li></ul></div><div align="center">
+
+</div>
+<section class="column-search-result">
+  <ul class="_image-items autopagerize_page_element">
+  {% for data in dataList %}
+    <li class="image-item ">
+      <a href="{{ data['link'] }}" class="work  _work ">
+        <div class="_layout-thumbnail">
+          <img src="{{ data['picsrc'] }}" class="_thumbnail">
+        </div>
+      </a>
+      <a href="{{ data['link'] }}">
+        <h1 class="title" title="{{ data['title'] }}">{{ data['title'] }}</h1>
+      </a>
+      <a href="{{ data['author_link'] }}" class="user ui-profile-popup" title="{{ data['author'] }}" data-user_id="{{ data['author_id'] }}" data-user_name="{{ data['author'] }}">{{ data['author'] }}
+      </a>
+      <span>{{ data['stars'] }} stars</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<nav class="column-order-menu"><div class="pager-container"><span class="prev"></span><ul class="page-list"><li class="current">1</li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=2">2</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=3">3</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=4">4</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=5">5</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=6">6</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=7">7</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=8">8</a></li><li><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=9">9</a></li></ul><span class="next"><a href="http://www.pixiv.net/search.php?word=%E8%89%A6%E3%81%93%E3%82%8C&s_mode=s_tag_full&order=date_d&p=2" rel="next" class="_button" title="下一頁"><i class="_icon sprites-next-linked"></i></a></span></div></nav></div></div>
+
+<script>pixiv.setupBeforeReady();</script><footer class="footer"><div class="container"><ul class="languages">
+<li class="current">
+繁體中文
+</li>
+</ul><dl class="links"><dt>公司信息</dt><dd><ul><li><a href="http://www.pixiv.co.jp/" target="_blank">運營公司</a></li><li><a href="http://recruit.pixiv.net/recruit-job-en.html" target="_blank" onclick="pixiv.tracking.event(&#39;recruit&#39;, &#39;From_Footer_en&#39;, &#39;&#39;)">招募人才</a></li></ul></dd></dl><div class="copyright">© pixiv</div></div></footer>
+
+<script type="text/javascript"><!--//<![CDATA[
+jQuery(document).ready(function() {
+    jQuery('.multi-ads-area').each(function() {
+        if (jQuery(this).find('iframe').length == 0) {
+            jQuery(this).append('<iframe src="http://d.pixiv.org/dummy.html" width="0" height="0" scrolling="no" marginwidth="0" style="border:none;" frameborder="0" style="position: absolute;"></iframe>');
+        }
+    });
+});
+//]]>--></script>
+</div>
+
+
+
+
+
+
+</body></html>
