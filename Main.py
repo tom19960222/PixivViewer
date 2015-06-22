@@ -23,10 +23,17 @@ def _doSearch(PHPSESSID, keyword, pages):
     resultList = list()
     cookie = {"PHPSESSID": PHPSESSID}
 
-    for i in range(1, pages):
-        URL = "http://www.pixiv.net/search.php?word=" + keyword + "&s_mode=s_tag_full&order=date_d&p="+str(i)
+    if pages == -1:
+        pages = 9999
+
+    for i in range(1, pages+1):
+        print("Searching keyword: %s | page: %s" % (keyword, i))
+        URL = "http://www.pixiv.net/search.php?word=" + keyword + "&order=date_d&p=" + str(i)
         r = requests.get(URL, cookies=cookie)
         r.encoding = 'utf-8'
+        if r.text.__contains__('未找到任何相關結果'):
+            print("Search to the end.")
+            break
         soup = BeautifulSoup(r.text)
 
         liList = soup.find_all('li', attrs={"class": "image-item"})
@@ -40,15 +47,16 @@ def _doSearch(PHPSESSID, keyword, pages):
             resultdata['author_link'] = "http://www.pixiv.net" + li.a.next_sibling.next_sibling.get('href')
             resultdata['author_id'] = getWorkID(resultdata['author_link'])
 
-            print(li.a.div.img.get('src'))
-            print(li.a.next_sibling.h1.text)
+            # print(li.a.div.img.get('src'))
+            # print(li.a.next_sibling.h1.text)
             if li.ul is not None:
                 resultdata['stars'] = int(li.ul.li.a.text)
             else:
                 resultdata['stars'] = 0
-            print(resultdata['stars'])
+            # print(resultdata['stars'])
 
             resultList.append(resultdata)
+        # print("Item count: %s" % liList.__len__())
     return resultList
 
 
